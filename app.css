@@ -1,0 +1,75 @@
+:root {
+    --dark-primary-color: #455A64;
+    --default-primary-color: #607D8B; 
+    --light-primary-color: #CFD8DC;
+    --text-primary-color: #FFFFFF;
+    --accent-color: #448AFF;
+    --primary-text-color: #212121;
+    --secondary-text-color: #757575;
+    --divider-color: #BDBDBD;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    background-color: var(--light-primary-color);
+    color: var(--primary-text-color);
+}
+
+.header {
+    background-color: var(--dark-primary-color);
+    color: var(--text-primary-color)
+}
+
+.header__title {
+    margin: 0;
+    padding: 20px 20px 0 20px;
+    font-size: 2.5em;
+}
+
+.header__text {
+    margin: 0;
+    padding: 5px 20px 20px 20px;
+    color: var(--text-primary-color)
+}
+
+.page {
+    margin: 20px auto;
+    max-width: 1024px;
+}
+
+.page__snippet {
+    margin-bottom: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.snippet {
+    box-shadow: 5px 5px 10px grey;
+}
+
+.snippet__title {
+    margin: 0;
+    padding: 1em;
+    font-size: 1.3em;
+    background-color: var(--default-primary-color);
+    color: var(--text-primary-color);
+}
+
+.snippet__title::before {
+    font-family: FontAwesome;
+    content: "\f121";
+    margin-right: 0.5em;
+}
+
+.snippet__body {
+    margin: 0;
+    padding: 2em;
+    padding-left: 3em;
+    font-family: Courier New, Courier, monospace;
+    font-size: 0.8em;
+    overflow: auto;
+    background-color: var(--text-primary-color);
+    color: var(--secondary-text-color);
+}

@@ -77,21 +77,51 @@ body {
 
 .snippet__body {
     display: none;
-    box-sizing: border-box;
     height: 0;
+    transition: height 500ms ease-in-out;
+}
+
+.snippet__code {
     margin: 0;
     padding: 2em;
     padding-left: 3em;
     font-family: Courier New, Courier, monospace;
     font-size: 0.8em;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: var(--text-primary-color);
     color: var(--secondary-text-color);
-    transition: height 500ms ease-in-out;
 }
 
 .is-visible {
     display: block;
     height: auto;
     overflow: auto;
+}
+
+.button {
+    border: none;
+    box-sizing: border-box;
+    padding: 0;
+    height: 1.3em;
+    width: 1.3em;
+    line-height: 1.3em;
+    border-radius: 100%;
+    background-color: var(--text-primary-color);
+    font-size: 1.5em;
+    color: var(--default-primary-color);
+    transition: 500ms;
+}
+
+.button::before {
+    font-family: FontAwesome;
+    content: "\f066";
+}
+
+.button:hover {
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.button:active {
+    opacity: 0.5;
 }

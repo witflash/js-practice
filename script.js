@@ -85,9 +85,13 @@ function addSnippetOnPage(funcName) {
             type: 'button'
         },
         body: {
-            tag: 'pre',
+            tag: 'div',
             class: 'snippet__body',
             data: ['expand', 'content']
+        },
+        code: {
+            tag: 'pre',
+            class: 'snippet__code',
         },
     };
 
@@ -105,11 +109,12 @@ function addSnippetOnPage(funcName) {
     };
 
     snippet.title.innerHTML = funcName.name;
-    snippet.button.innerHTML = "+";
-    snippet.body.innerHTML = funcName;
+    // snippet.button.innerHTML = "+";
+    snippet.code.innerHTML = funcName;
 
     snippet.header.appendChild(snippet.title);
     snippet.header.appendChild(snippet.button);
+    snippet.body.appendChild(snippet.code);
     snippet.main.appendChild(snippet.header);
     snippet.main.appendChild(snippet.body);
 
@@ -129,7 +134,21 @@ snippets.forEach( function(item) {
     item.addEventListener('click', function(e) {
         if (e.target.dataset.expand == 'button') {
             let block = this.querySelector('[data-expand="content"]');
+            let button = this.querySelector('[data-expand="button"]')
             toggleVisibility(block, 500);
+            // buttonCollapse(button);
+
+            // function buttonCollapse (button) {
+            //     console.log(button.innerHTML);
+            //     if (button.innerHTML == '+') {
+            //         console.log(true);
+            //         button.innerHTML = '-';
+            //         return
+            //         console.log(button.innerHTML);
+            //     };
+            //     button.innerHTML = '+';
+            // };
+
         }
     });
 })

@@ -26,19 +26,20 @@ body {
 
 .header__title {
     margin: 0;
-    padding: 20px 20px 0 20px;
+    padding: 20px;
     font-size: 2.5em;
 }
 
-.header__text {
-    margin: 0;
-    padding: 5px 20px 20px 20px;
-    color: var(--text-primary-color)
-}
 
 .page {
-    margin: 40px auto;
+    margin: 0 auto;
     max-width: 1024px;
+}
+
+.page__text {
+    margin: 0;
+    padding: 20px;
+    color: var(--secondary-text-color)
 }
 
 .page__snippet {
@@ -118,11 +119,10 @@ body {
 }
 
 .button:hover {
-    transform: rotate(90deg);
+    transform: rotate(180deg);
     cursor: pointer;
 }
 
 .button:active {
     opacity: 0.5;
-    outline: none !important;
 }

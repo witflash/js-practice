@@ -129,7 +129,56 @@ snippets.forEach( function(item) {
     item.addEventListener('click', function(e) {
         if (e.target.dataset.expand == 'button') {
             let block = this.querySelector('[data-expand="content"]');
-            block.classList.toggle('snippet__body_show');
+            toggleVisibility(block, 500);
         }
     });
 })
+
+
+function toggleVisibility (elem, timing) {
+
+    let show = function (elem, timing) {
+
+        let getHeight = function () {
+            elem.style.display = 'block';
+            let height = elem.scrollHeight + 'px';
+            elem.style.display = '';
+            return height;
+        };
+
+        let height = getHeight();
+        elem.classList.add('is-visible');
+        elem.style.height = height;
+
+        window.setTimeout( function () {
+            elem.style.height = '';
+        }, timing);
+
+    };
+
+    let hide = function (elem, timing) {
+        elem.style.height = elem.scrollHeight + 'px';
+
+        window.setTimeout( function () {
+            elem.style.height = '0';
+        }, 1);
+
+        window.setTimeout( function () {
+            elem.classList.remove('is-visible');
+        }, timing);
+
+    };
+
+    let toggle = function (elem, timing) {
+
+        if (elem.classList.contains('is-visible')) {
+            hide(elem, timing);
+            return;
+        };
+
+        show(elem, timing);
+    };
+
+    toggle(elem, timing);
+
+};

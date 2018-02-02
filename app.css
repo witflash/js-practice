@@ -77,16 +77,21 @@ body {
 
 .snippet__body {
     display: none;
+    box-sizing: border-box;
+    height: 0;
     margin: 0;
     padding: 2em;
     padding-left: 3em;
     font-family: Courier New, Courier, monospace;
     font-size: 0.8em;
-    overflow: auto;
+    overflow: hidden;
     background-color: var(--text-primary-color);
     color: var(--secondary-text-color);
+    transition: height 500ms ease-in-out;
 }
 
-.snippet__body_show {
+.is-visible {
     display: block;
+    height: auto;
+    overflow: auto;
 }

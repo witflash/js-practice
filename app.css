@@ -88,8 +88,6 @@ body {
     padding-left: 3em;
     font-family: Courier New, Courier, monospace;
     font-size: 0.8em;
-    /* overflow: hidden; */
-    background-color: var(--text-primary-color);
     color: var(--secondary-text-color);
 }
 
@@ -97,6 +95,7 @@ body {
     display: block;
     height: auto;
     overflow: auto;
+    background-color: var(--text-primary-color);    
 }
 
 .button {
@@ -125,4 +124,5 @@ body {
 
 .button:active {
     opacity: 0.5;
+    outline: none !important;
 }

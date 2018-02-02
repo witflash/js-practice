@@ -136,19 +136,6 @@ snippets.forEach( function(item) {
             let block = this.querySelector('[data-expand="content"]');
             let button = this.querySelector('[data-expand="button"]')
             toggleVisibility(block, 500);
-            // buttonCollapse(button);
-
-            // function buttonCollapse (button) {
-            //     console.log(button.innerHTML);
-            //     if (button.innerHTML == '+') {
-            //         console.log(true);
-            //         button.innerHTML = '-';
-            //         return
-            //         console.log(button.innerHTML);
-            //     };
-            //     button.innerHTML = '+';
-            // };
-
         }
     });
 })

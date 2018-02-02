@@ -61,6 +61,7 @@ body {
 
 .snippet__title {
     margin: 0;
+    overflow: hidden;    
     font-size: 1.3em;
     color: var(--text-primary-color);
 }
@@ -72,7 +73,7 @@ body {
 }
 
 .snippet__button {
-
+    flex: 0 0 auto;
 }
 
 .snippet__body {

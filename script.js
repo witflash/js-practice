@@ -1,12 +1,15 @@
+// GLOBAL VARIABLES (DON'T REMOVE ITS!)
+var snippetIndex = 0;
+
+
 // ==========================================================================================
-// |                                    new                                        |
+// |                                    new                                                 |
 // ==========================================================================================
 
 
 // ==========================================================================================
 // |                                    GOOD VS EVIL                                        |
 // ==========================================================================================
-{
 function goodVsEvil(good, evil) {
     let goodWorth = [1, 2, 3, 3, 4, 10],
         evilWorth = [1, 2, 2, 2, 3, 5, 10],
@@ -23,23 +26,10 @@ function goodVsEvil(good, evil) {
 
     let result = Math.sign(powerIt(good, goodWorth) - powerIt(evil, evilWorth));
     return wins[result]
-}
+};
 
-let snippet = document.createElement('div'),
-    title = document.createElement('h3'),
-    body = document.createElement('pre');
+addSnippetOnPage(goodVsEvil);
 
-title.className = "snippet__title";
-title.innerHTML = goodVsEvil.name;
-body.className = "snippet__body";
-body.innerHTML = goodVsEvil;
-
-snippet.className = "snippet page__snippet";
-snippet.appendChild(title);
-snippet.appendChild(body);
-
-document.querySelector('.page').appendChild(snippet);
-}
 
 // ==========================================================================================
 // |                                  TESTS FROM ADRABA                                     |
@@ -67,3 +57,79 @@ document.querySelector('.page').appendChild(snippet);
 //         console.log(x);
 //     })(2)
 // })(1);
+
+
+// ==========================================================================================
+// |                              ADD SNIPPET ON THE PAGE                                   |
+// ==========================================================================================
+
+function addSnippetOnPage(funcName) {
+    let snippet = {
+        main: {
+            tag: 'div',
+            class: 'snippet page__snippet',
+            data: ['index', ++snippetIndex]
+        },
+        header: {
+            tag: 'div',
+            class: 'snippet__header'
+        },
+        title: {
+            tag: 'h3',
+            class: 'snippet__title',
+        },
+        button: {
+            tag: 'button',
+            class: 'button snippet__button',
+            data: ['expand', 'button'],
+            type: 'button'
+        },
+        body: {
+            tag: 'pre',
+            class: 'snippet__body',
+            data: ['expand', 'content']
+        },
+    };
+
+    for (element in snippet) {
+        let node = snippet[element];
+        let newElem = document.createElement(node.tag);
+        newElem.className = node.class;
+        if (node.data) {
+            newElem.dataset[node.data[0]] = node.data[1];
+        };
+        if (node.type) {
+            newElem.setAttribute('type', node.type);
+        };
+        snippet[element] = newElem;
+    };
+
+    snippet.title.innerHTML = funcName.name;
+    snippet.button.innerHTML = "+";
+    snippet.body.innerHTML = funcName;
+
+    snippet.header.appendChild(snippet.title);
+    snippet.header.appendChild(snippet.button);
+    snippet.main.appendChild(snippet.header);
+    snippet.main.appendChild(snippet.body);
+
+    document.querySelector('.page').appendChild(snippet.main);
+};
+
+addSnippetOnPage(addSnippetOnPage);
+addSnippetOnPage(addSnippetOnPage);
+
+
+// ==========================================================================================
+// |                              SHOW / HIDE FULL SNIPPET                                  |
+// ==========================================================================================
+var snippets = document.querySelectorAll('[data-index]');
+
+snippets.forEach( function(item) {
+    item.addEventListener('click', function(e) {
+        if (e.target.dataset.expand == 'button') {
+            let block = this.querySelector('[data-expand="content"]');
+            block.classList.toggle('snippet__body_show');
+        }
+    });
+})

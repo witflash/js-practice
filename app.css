@@ -18,8 +18,10 @@ body {
 }
 
 .header {
+    width: 100%;
     background-color: var(--dark-primary-color);
-    color: var(--text-primary-color)
+    color: var(--text-primary-color);
+    box-shadow: 0 5px 10px gray;
 }
 
 .header__title {
@@ -35,7 +37,7 @@ body {
 }
 
 .page {
-    margin: 20px auto;
+    margin: 40px auto;
     max-width: 1024px;
 }
 
@@ -49,11 +51,17 @@ body {
     box-shadow: 5px 5px 10px grey;
 }
 
+.snippet__header {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--default-primary-color);
+}
+
 .snippet__title {
     margin: 0;
-    padding: 1em;
     font-size: 1.3em;
-    background-color: var(--default-primary-color);
     color: var(--text-primary-color);
 }
 
@@ -63,7 +71,12 @@ body {
     margin-right: 0.5em;
 }
 
+.snippet__button {
+
+}
+
 .snippet__body {
+    display: none;
     margin: 0;
     padding: 2em;
     padding-left: 3em;
@@ -72,4 +85,8 @@ body {
     overflow: auto;
     background-color: var(--text-primary-color);
     color: var(--secondary-text-color);
+}
+
+.snippet__body_show {
+    display: block;
 }

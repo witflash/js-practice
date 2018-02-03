@@ -18,6 +18,8 @@ body {
 }
 
 .header {
+    position: fixed;
+    top: 0;
     width: 100%;
     background-color: var(--dark-primary-color);
     color: var(--text-primary-color);
@@ -26,14 +28,25 @@ body {
 
 .header__title {
     margin: 0;
-    padding: 20px;
+    padding: 0.5em;
     font-size: 2.5em;
+    line-height: 1em;
+    transition: 500ms;
 }
 
+.header__title_narrow {
+    font-size: 1.5em;
+}
+
+.sticky + .page {
+    padding-top: 3.5em;
+}
 
 .page {
     margin: 0 auto;
+    padding-top: 5em;
     max-width: 1024px;
+    transition: 500ms;
 }
 
 .page__text {
@@ -108,7 +121,7 @@ body {
     line-height: 1.3em;
     border-radius: 100%;
     background-color: var(--text-primary-color);
-    font-size: 1.5em;
+    font-size: 1.1em;
     color: var(--default-primary-color);
     transition: 500ms;
 }

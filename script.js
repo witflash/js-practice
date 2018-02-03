@@ -128,6 +128,7 @@ addSnippetOnPage(addSnippetOnPage);
 // ==========================================================================================
 // |                              SHOW / HIDE FULL SNIPPET                                  |
 // ==========================================================================================
+
 var snippets = document.querySelectorAll('[data-index]');
 
 snippets.forEach( function(item) {
@@ -188,3 +189,22 @@ function toggleVisibility (elem, timing) {
     toggle(elem, timing);
 
 };
+
+
+// ==========================================================================================
+// |                                    STICKY HEADER                                       |
+// ==========================================================================================
+
+var header = document.querySelector('.header');
+var headerTitle = document.querySelector('.header__title');
+var sticky = header.offsetTop;
+
+window.addEventListener('scroll', function (e) {
+    if (window.pageYOffset > sticky) {
+        headerTitle.classList.add('header__title_narrow');
+        header.classList.add('sticky');
+    } else {
+        headerTitle.classList.remove('header__title_narrow');
+        header.classList.remove('sticky');
+    }
+})

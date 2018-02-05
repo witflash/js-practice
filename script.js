@@ -202,7 +202,7 @@ function addSnippetOnPage(funcName) {
         },
         button: {
             tag: 'button',
-            class: 'button snippet__button',
+            class: 'button button_collapse snippet__button',
             data: ['expand', 'button'],
             type: 'button'
         },
@@ -336,28 +336,39 @@ window.addEventListener('scroll', function (e) {
 // |                                      SHOW MORE                                         |
 // ==========================================================================================
 
-var showText = document.querySelector('[data-show-more]');
-textToHide(showText);
+var hiddenText = document.querySelector('[data-show-more]');
+textToHide(hiddenText, 200);
 
-function textToHide (node) {
+function textToHide (node, letters) {
     let data = node.innerHTML;
-    let dataCut = data.slice(0,30);
-    let newNode = {
-            button: {
-                tag: 'button',
-                attributes: {
-                    class: 'button button__more',
-                    type: 'button'
-                }
+    if (data.length <= letters) {
+        return;
+    }
+
+    let newButton = {
+            tag: 'button',
+            attributes: {
+                class: 'button button_more page__button',
+                type: 'button',
+                'data-event': 'show-more'
             }
         };
-    let button = createNode(newNode.button, 'Show More');
-    // let button = document.createElement(newNode.button.tag, newNode.button.attr);
-    // button.setAttribute()
+    let button = createNode(newButton, 'Show More');
 
+    node.innerHTML = data.slice(0, letters) + '...';
+    node.appendChild(button);
 
-    node.innerHTML = dataCut;
-
+    let isHidden = true;
+    button.addEventListener('click', function () {
+        if (isHidden) {
+            node.firstChild.textContent = data;
+            button.textContent = 'Hide Text';
+        } else {
+            node.firstChild.textContent = data.slice(0, letters) + '...';
+            button.textContent = 'Show More';
+        }
+        isHidden = !isHidden;
+    })
 };
 
 
@@ -366,6 +377,7 @@ function textToHide (node) {
 // ==========================================================================================
 // INFO:
 // node = {tag: name[, attributes: {atributeName: value, ...}]}
+// inner = some text (not a DOM element)
 
 function createNode (node, inner) {
     let newNode = document.createElement(node.tag);

@@ -7,11 +7,13 @@
     --primary-text-color: #212121;
     --secondary-text-color: #757575;
     --divider-color: #BDBDBD;
+
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-main);
     font-size: 18px;
     background-color: var(--light-primary-color);
     color: var(--primary-text-color);
@@ -54,6 +56,10 @@ body {
     margin: 0;
     padding: 20px;
     color: var(--secondary-text-color)
+}
+
+.page__button {
+    margin-left: 0.7em;
 }
 
 .page__snippet {
@@ -117,23 +123,15 @@ body {
     border: none;
     box-sizing: border-box;
     padding: 0;
-    height: 1.3em;
-    width: 1.3em;
-    line-height: 1.3em;
-    border-radius: 100%;
     background-color: var(--text-primary-color);
-    font-size: 1.1em;
+    font-family: var(--font-main);
+    font-weight: bold;
     color: var(--default-primary-color);
-    transition: 500ms;
-}
-
-.button::before {
-    font-family: FontAwesome;
-    content: "\f066";
+    user-select: none;
+    transition: 500ms;    
 }
 
 .button:hover {
-    transform: rotate(180deg);
     cursor: pointer;
 }
 
@@ -141,6 +139,28 @@ body {
     opacity: 0.5;
 }
 
+.button_collapse {
+    height: 1.3em;
+    width: 1.3em;
+    line-height: 1.3em;
+    border-radius: 100%;
+    font-size: 1.1em;
+}
+
+.button_collapse::before {
+    font-family: FontAwesome;
+    content: "\f066";
+}
+
+.button_collapse:hover {
+    transform: rotate(180deg);
+}
+
+.button_more {
+    padding: 0.2em 0.6em;
+    border-radius: 0.3em;
+    color: var(--accent-color);
+}
 
 
 @media only screen and (min-width: 700px) {

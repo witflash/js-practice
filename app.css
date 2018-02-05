@@ -29,13 +29,14 @@ body {
 .header__title {
     margin: 0;
     padding: 0.5em;
-    font-size: 2.5em;
+    font-size: 2em;
     line-height: 1em;
+    white-space: nowrap;
     transition: 500ms;
 }
 
 .header__title_narrow {
-    font-size: 1.5em;
+    font-size: 1.5em !important;
 }
 
 .sticky + .page {
@@ -138,4 +139,17 @@ body {
 
 .button:active {
     opacity: 0.5;
+}
+
+
+
+@media only screen and (min-width: 700px) {
+    .header__title {
+        font-size: 3em;
+    }
+
+    .page {
+        padding-top: 7em;
+    }
+
 }

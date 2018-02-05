@@ -2,9 +2,96 @@
 var snippetIndex = 0;
 
 
+function checkBrackets(str) {
+    console.log(`String to check: ${str}`);
+	let open = {
+		'(': '0',
+		'[': 1,
+		'<': 2
+	};
+	let close = {
+		')': '0',
+		']': 1,
+		'>': 2,
+	};
+    let stack = [0, 0, 0];
+    let char = str[0];	
+
+    for (i = 0; i < str.length; i++) {
+        if (open[char]) {
+            console.log(`Found opening brasket ${char}`);
+            return 1;
+            // if (str.substring(1)) {
+            //     return checkBrackets(str.substring(1));
+            // } 
+        } else if (close[char]) {
+            console.log(`Closing brasket ${char} found`);
+            return 0;
+        };
+        stack[open[char]] -= checkBrackets(str.substring(1));
+    }
+    return stack;    
+}
+
+
+addSnippetOnPage(checkBrackets);
+
+
+
 // ==========================================================================================
-// |                                    new                                                 |
+// |                                    NOTADAPTIVE FUNC                                    |
 // ==========================================================================================
+
+function notGoodCode(s, a, b)
+{
+    var match_empty=/^$/ ;
+    if (s.match(match_empty))
+    {
+        return -1;
+    }
+    else
+    {
+        var i=s.length-1;
+        var aIndex=-1;
+        var bIndex=-1;
+
+        while ((aIndex==-1) && (bIndex==-1) && (i>=0))
+        {
+            if (s.substring(i, i+1) == a)
+                aIndex=i;
+        	if (s.substring(i, i+1) == b)
+                bIndex=i;
+        	i--;
+        }
+
+        if (aIndex != -1)
+        {
+            if (bIndex == -1)
+                return aIndex;
+        	else
+                return Math.max(aIndex, bIndex);
+        }
+        else
+        {
+            if (bIndex != -1)
+                return bIndex;       
+	      else
+                return -1;
+        }
+    }
+};
+
+addSnippetOnPage(notGoodCode);
+
+function itsGoodCode (s, a, b) {
+    if (!s.length) {
+        return -1;
+    };
+
+    return s.indexOf(a) > s.indexOf(b) ? s.indexOf(a) : s.indexOf(b);
+}
+
+addSnippetOnPage(itsGoodCode);
 
 
 // ==========================================================================================

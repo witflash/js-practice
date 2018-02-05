@@ -52,7 +52,7 @@ body {
     transition: 500ms;
 }
 
-.page__text {
+.page__preface {
     margin: 0;
     padding: 20px;
     color: var(--secondary-text-color)

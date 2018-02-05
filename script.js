@@ -2,9 +2,9 @@
 var snippetIndex = 0;
 
 
-// ==========================================================================================
-// |                             FIBONACCI with RECURSION                                   |
-// ==========================================================================================
+//==============================================================================
+//                             FIBONACCI with RECURSION                        |
+//==============================================================================
 
 function getFibonacciRecursion(n) {
     if (n === 1) {
@@ -21,9 +21,9 @@ function getFibonacciRecursion(n) {
 addSnippetOnPage(getFibonacciRecursion);
 
 
-// ==========================================================================================
-// |                                FIBONACCI with CYCLE                                    |
-// ==========================================================================================
+//==============================================================================
+//                                FIBONACCI with CYCLE                         |
+//==============================================================================
 
 function getFibonacciFor(n) {
     let fib = [0, 1];
@@ -39,9 +39,9 @@ function getFibonacciFor(n) {
 addSnippetOnPage(getFibonacciFor)
 
 
-// ==========================================================================================
-// |                                CHECK BRACKETS BALANCE                                  |
-// ==========================================================================================
+//==============================================================================
+//                              CHECK BRACKETS BALANCE                         |
+//==============================================================================
 
 function checkBrackets(str) {
 	let open = {
@@ -73,9 +73,9 @@ addSnippetOnPage(checkBrackets);
 
 
 
-// ==========================================================================================
-// |                                    NOTADAPTIVE FUNC                                    |
-// ==========================================================================================
+//==============================================================================
+//                            NOTADAPTIVE FUNC                                 |
+//==============================================================================
 
 function notGoodCode(s, a, b)
 {
@@ -129,9 +129,9 @@ function itsGoodCode (s, a, b) {
 addSnippetOnPage(itsGoodCode);
 
 
-// ==========================================================================================
-// |                                    GOOD VS EVIL                                        |
-// ==========================================================================================
+//==============================================================================
+//                                   GOOD VS EVIL                              |
+//==============================================================================
 function goodVsEvil(good, evil) {
     let goodWorth = [1, 2, 3, 3, 4, 10],
         evilWorth = [1, 2, 2, 2, 3, 5, 10],
@@ -153,9 +153,9 @@ function goodVsEvil(good, evil) {
 addSnippetOnPage(goodVsEvil);
 
 
-// ==========================================================================================
-// |                                  TESTS FROM ADRABA                                     |
-// ==========================================================================================
+//==============================================================================
+//                                TESTS FROM ADRABA                            |
+//==============================================================================
 // for (var i = 0; i < 5; i++) {
 //     (function (i) {
 //         setTimeout(function () { console.log(i); }, i * 1000);
@@ -181,9 +181,9 @@ addSnippetOnPage(goodVsEvil);
 // })(1);
 
 
-// ==========================================================================================
-// |                              ADD SNIPPET ON THE PAGE                                   |
-// ==========================================================================================
+//==============================================================================
+//                         ADD SNIPPET ON THE PAGE                             |
+//==============================================================================
 
 function addSnippetOnPage(funcName) {
     let snippet = {
@@ -242,14 +242,16 @@ function addSnippetOnPage(funcName) {
     document.querySelector('.page').appendChild(snippet.main);
 };
 
+// add snippets on the page before add Event Listener
 addSnippetOnPage(addSnippetOnPage);
 addSnippetOnPage(toggleVisibility);
+addSnippetOnPage(textToHide);
 addSnippetOnPage(createNode);
 
 
-// ==========================================================================================
-// |                              SHOW / HIDE FULL SNIPPET                                  |
-// ==========================================================================================
+//==============================================================================
+//                         SHOW / HIDE FULL SNIPPET                            |
+//==============================================================================
 
 var snippets = document.querySelectorAll('[data-index]');
 
@@ -313,9 +315,9 @@ function toggleVisibility (elem, timing) {
 };
 
 
-// ==========================================================================================
-// |                                    STICKY HEADER                                       |
-// ==========================================================================================
+//==============================================================================
+//                               STICKY HEADER                                 |
+//==============================================================================
 
 var header = document.querySelector('.header');
 var headerTitle = document.querySelector('.header__title');
@@ -332,15 +334,17 @@ window.addEventListener('scroll', function (e) {
 })
 
 
-// ==========================================================================================
-// |                                      SHOW MORE                                         |
-// ==========================================================================================
+//==============================================================================
+//                               SHOW MORE TEXT                                |
+//==============================================================================
 
 var hiddenText = document.querySelector('[data-show-more]');
 textToHide(hiddenText, 200);
 
 function textToHide (node, letters) {
     let data = node.innerHTML;
+    let dataCut = data.slice(0, letters) + '...';
+    console.log(data);
     if (data.length <= letters) {
         return;
     }
@@ -355,7 +359,7 @@ function textToHide (node, letters) {
         };
     let button = createNode(newButton, 'Show More');
 
-    node.innerHTML = data.slice(0, letters) + '...';
+    node.innerHTML = dataCut;
     node.appendChild(button);
 
     let isHidden = true;
@@ -364,7 +368,7 @@ function textToHide (node, letters) {
             node.firstChild.textContent = data;
             button.textContent = 'Hide Text';
         } else {
-            node.firstChild.textContent = data.slice(0, letters) + '...';
+            node.firstChild.textContent = dataCut;
             button.textContent = 'Show More';
         }
         isHidden = !isHidden;
@@ -372,9 +376,9 @@ function textToHide (node, letters) {
 };
 
 
-// ==========================================================================================
-// |                                     NODE CREATOR                                       |
-// ==========================================================================================
+//==============================================================================
+//                                 NODE CREATOR                                |
+//==============================================================================
 // INFO:
 // node = {tag: name[, attributes: {atributeName: value, ...}]}
 // inner = some text (not a DOM element)

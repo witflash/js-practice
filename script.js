@@ -3,6 +3,43 @@ var snippetIndex = 0;
 
 
 // ==========================================================================================
+// |                             FIBONACCI with RECURSION                                   |
+// ==========================================================================================
+
+function getFibonacciRecursion(n) {
+    if (n === 1) {
+        return [0, 1];
+    }
+
+    let fib = getFibonacciFor(n - 1),
+        len = fib.length;
+    fib.push(fib[len - 1] + fib[len - 2]);
+    
+    return fib;
+}
+
+addSnippetOnPage(getFibonacciRecursion);
+
+
+// ==========================================================================================
+// |                                FIBONACCI with CYCLE                                    |
+// ==========================================================================================
+
+function getFibonacciFor(n) {
+    let fib = [0, 1];
+
+    for (i = 0; i < (n -1); i++) {
+        let len = fib.length;
+        fib.push(fib[len - 1] + fib[len - 2]);
+    }
+
+    return fib.slice(1);
+}
+
+addSnippetOnPage(getFibonacciFor)
+
+
+// ==========================================================================================
 // |                                CHECK BRACKETS BALANCE                                  |
 // ==========================================================================================
 
@@ -194,7 +231,6 @@ function addSnippetOnPage(funcName) {
     };
 
     snippet.title.innerHTML = funcName.name;
-    // snippet.button.innerHTML = "+";
     snippet.code.innerHTML = funcName;
 
     snippet.header.appendChild(snippet.title);
@@ -207,8 +243,8 @@ function addSnippetOnPage(funcName) {
 };
 
 addSnippetOnPage(addSnippetOnPage);
-
 addSnippetOnPage(toggleVisibility);
+addSnippetOnPage(createNode);
 
 
 // ==========================================================================================
@@ -294,3 +330,50 @@ window.addEventListener('scroll', function (e) {
         header.classList.remove('sticky');
     }
 })
+
+
+// ==========================================================================================
+// |                                      SHOW MORE                                         |
+// ==========================================================================================
+
+var showText = document.querySelector('[data-show-more]');
+textToHide(showText);
+
+function textToHide (node) {
+    let data = node.innerHTML;
+    let dataCut = data.slice(0,30);
+    let newNode = {
+            button: {
+                tag: 'button',
+                attributes: {
+                    class: 'button button__more',
+                    type: 'button'
+                }
+            }
+        };
+    let button = createNode(newNode.button, 'Show More');
+    // let button = document.createElement(newNode.button.tag, newNode.button.attr);
+    // button.setAttribute()
+
+
+    node.innerHTML = dataCut;
+
+};
+
+
+// ==========================================================================================
+// |                                     NODE CREATOR                                       |
+// ==========================================================================================
+// INFO:
+// node = {tag: name[, attributes: {atributeName: value, ...}]}
+
+function createNode (node, inner) {
+    let newNode = document.createElement(node.tag);
+    for (name in node.attributes) {
+        newNode.setAttribute(name, node.attributes[name]);
+    }
+    if (inner) {
+        newNode.innerHTML = inner;
+    }
+    return newNode;
+};

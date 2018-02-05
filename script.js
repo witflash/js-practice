@@ -2,37 +2,35 @@
 var snippetIndex = 0;
 
 
+// ==========================================================================================
+// |                                CHECK BRACKETS BALANCE                                  |
+// ==========================================================================================
+
 function checkBrackets(str) {
-    console.log(`String to check: ${str}`);
 	let open = {
-		'(': '0',
-		'[': 1,
-		'<': 2
-	};
-	let close = {
-		')': '0',
-		']': 1,
-		'>': 2,
-	};
-    let stack = [0, 0, 0];
-    let char = str[0];	
+		'(': ')',
+		'[': ']',
+		'<': '>'
+    };
+    let close = {
+        ')': true,
+        ']': true,
+        '>': true
+    };
+    let stack = [];
 
     for (i = 0; i < str.length; i++) {
+        let char = str[i];
         if (open[char]) {
-            console.log(`Found opening brasket ${char}`);
-            return 1;
-            // if (str.substring(1)) {
-            //     return checkBrackets(str.substring(1));
-            // } 
+            stack.push(char);
         } else if (close[char]) {
-            console.log(`Closing brasket ${char} found`);
-            return 0;
-        };
-        stack[open[char]] -= checkBrackets(str.substring(1));
+            if (open[stack.pop()] != char) {
+                return 0;
+            }
+        }
     }
-    return stack;    
+    return stack.length == 0 ? 1 : 0;
 }
-
 
 addSnippetOnPage(checkBrackets);
 
@@ -209,7 +207,8 @@ function addSnippetOnPage(funcName) {
 };
 
 addSnippetOnPage(addSnippetOnPage);
-addSnippetOnPage(addSnippetOnPage);
+
+addSnippetOnPage(toggleVisibility);
 
 
 // ==========================================================================================

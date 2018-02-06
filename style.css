@@ -58,6 +58,10 @@ body {
     color: var(--secondary-text-color)
 }
 
+.page__preface strong {
+    color: var(--accent-color);
+}
+
 .page__button {
     margin-left: 0.7em;
 }

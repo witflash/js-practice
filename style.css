@@ -25,7 +25,7 @@ body {
     width: 100%;
     background-color: var(--dark-primary-color);
     color: var(--text-primary-color);
-    box-shadow: 0 5px 10px gray;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 .header__title {
@@ -124,9 +124,9 @@ body {
 }
 
 .button {
-    border: none;
     box-sizing: border-box;
     padding: 0;
+    border: 1px solid var(--text-primary-color);
     background-color: var(--text-primary-color);
     font-family: var(--font-main);
     font-weight: bold;
@@ -139,6 +139,11 @@ body {
     cursor: pointer;
 }
 
+.button:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
 .button:active {
     opacity: 0.5;
 }
@@ -146,12 +151,12 @@ body {
 .button_collapse {
     height: 1.3em;
     width: 1.3em;
-    line-height: 1.3em;
     border-radius: 100%;
     font-size: 1.1em;
 }
 
 .button_collapse::before {
+    display: block;
     font-family: FontAwesome;
     content: "\f066";
 }
@@ -166,6 +171,16 @@ body {
     color: var(--accent-color);
 }
 
+.footer {
+	position: fixed;
+	bottom: 0;
+	padding: 0.5em 1.5em;
+	border-top-right-radius: 1em;
+	background-color: var(--dark-primary-color);
+	font-size: 0.6em;
+	color: white;
+	opacity: 0.9;
+}
 
 @media only screen and (min-width: 700px) {
     .header__title {

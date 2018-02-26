@@ -1,3 +1,69 @@
+// (function () {
+// })();
+
+
+
+function drawFigure(type, width, height) {
+
+
+    if (type = 'rect') {
+        let column = '';
+        for (let i = 0; i < height; i++) {
+            let row = '';
+            for (let j = 0; j < width; j++) {
+                row += '*';
+            };
+            column += (row + '\n'); 
+        }
+        console.log(column);
+    };
+
+    if (type = 'right triangle') {
+
+    }
+}
+
+addSnippetOnPage(drawFigure);
+
+
+//==============================================================================
+//                             SHIFTED DIFFERENT                               |
+//==============================================================================
+
+(function () {
+    function shiftedDiff(first, second){
+        let count = 0;
+        for (let i = 0; i < first.length; i++) {
+            if (first == second) {
+                return count;
+            }
+            first = first.slice(-1) + first.slice(0, -1);
+            count++;
+        };
+        return -1;
+    };
+
+    addSnippetOnPage(shiftedDiff);
+})();
+
+
+//==============================================================================
+//                             FORMAT PHONE NUMBER                             |
+//==============================================================================
+
+(function() {
+    function createPhoneNumber(numbers){
+        let formatChars = {'0':'(', '4':')', '5':' ', '9':'-'};
+        for (let key in formatChars) {
+          numbers.splice(key, 0, formatChars[key]);
+        }
+        return(numbers.join(''));
+      }
+    
+    addSnippetOnPage(createPhoneNumber);
+})();
+
+
 //==============================================================================
 //                             FIBONACCI with RECURSION                        |
 //==============================================================================
@@ -175,3 +241,10 @@ addSnippetOnPage(goodVsEvil);
 //         console.log(x);
 //     })(2)
 // })(1);
+
+
+// add snippets from main.js
+addSnippetOnPage(addSnippetOnPage);
+addSnippetOnPage(toggleVisibility);
+addSnippetOnPage(textToHide);
+addSnippetOnPage(createNode);

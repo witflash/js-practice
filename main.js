@@ -3,11 +3,6 @@
 // GLOBAL VARIABLES (DON'T REMOVE ITS!)
 var snippetIndex = 0;
 
-// add snippets from main.js
-addSnippetOnPage(addSnippetOnPage);
-addSnippetOnPage(toggleVisibility);
-addSnippetOnPage(textToHide);
-addSnippetOnPage(createNode);
 
 //==============================================================================
 //                         ADD SNIPPET ON THE PAGE                             |

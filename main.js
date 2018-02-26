@@ -1,3 +1,4 @@
+'use strict';
 // This file is for main actions on the page
 
 // GLOBAL VARIABLES (DON'T REMOVE ITS!)
@@ -40,7 +41,7 @@ function addSnippetOnPage(funcName) {
         },
     };
 
-    for (element in snippet) {
+    for (let element in snippet) {
         let node = snippet[element];
         let newElem = document.createElement(node.tag);
         newElem.className = node.class;

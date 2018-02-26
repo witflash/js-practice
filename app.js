@@ -65,7 +65,7 @@ function drawFigure() {
             }
             console.log('Height is ignored');
             return figure;
-        }
+        };
     };
 };
 
